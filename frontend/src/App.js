@@ -3,33 +3,6 @@ import logo from './logo.svg';
 import './App.css';
 import axios, * as others from 'axios';
 function App() {
-    // let postData = () =>{
-    //   axios.post('http://localhost:8000/api/tasks/', {
-    //       title: ,
-    //       description: 'Flintstone'
-    //     })
-    //     .then(function (response) {
-    //       console.log(response);
-    //     })
-    //     .catch(function (error) {
-    //       console.log(error);
-    //     });
-
-    // }
-    // let postData = (event) =>{
-    //   console.log(event.target.title.value)
-    //   axios.post(`http://localhost:8000/api/task`,{ // ${event.id}
-    //     title: event.target.title.value,
-    //     description: event.target.desc.value,
-    //     isDone: false
-    //   })
-    //   .then(function (response) {
-    //     console.log(response);
-    //   })
-    //   .catch(function (error) {
-    //     console.log(error);
-    //   });
-    // }
 
     let postData = async (event) =>{
       event.preventDefault()
