@@ -1,8 +1,19 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
+import { useEffect, useState } from 'react';
 import './App.css';
-import axios, * as others from 'axios';
 function App() {
+  const [data, setData] = useState([]);
+
+
+  useEffect(() => {
+    
+    fetch('http://localhost:8000/api/task/')
+        .then(response => response.json())
+        .then(data => setData(data))
+        .catch(error => console.log(error))
+
+
+  }, []);
 
     let postData = async (event) =>{
       event.preventDefault()
@@ -10,7 +21,7 @@ function App() {
         title: event.target.title.value,
         description: event.target.desc.value,
       };
-    
+
       const requestOptions = {
         method: 'POST',
         mode: 'cors',
@@ -27,7 +38,11 @@ function App() {
 
     }
 
-
+    const handleDelete = (id) =>{
+      fetch(`http://localhost:8000/api/task/${id}`, {method: 'DELETE'})
+        .then(() => console.log('DONE'))
+        .catch(error => console.log(error))
+    }
     return (
       <div className="App">
         <form onSubmit={postData}>
@@ -35,6 +50,26 @@ function App() {
           <input type="text" name="desc" />
           <input type="submit" />
         </form>
+        <div>
+          {
+            data.map((item, index) => (
+              <ul key={index}>
+                <li>
+                  {item.title}
+                </li>
+                <li>
+                  {item.description}
+                </li>
+                <li>
+                  {item.id}
+                </li>
+                <button onClick={handleDelete(item.id)}>DELETE</button>
+              </ul>
+            ))
+          }
+        </div>
+
+
       </div>
     );
 
