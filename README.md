@@ -22,12 +22,6 @@ pip install djangorestframework
 pip install django-cors-headers
 ```
 
-### Installing react
-
-```shell
-npm i react
-```
-
 ### Running Django development server
 
 __You have to execute this command in the [backend](https://github.com/Piotrexx/React-and-Django-To-Do-list/tree/master/backend) folder__
@@ -45,9 +39,4 @@ npm start
 ```
 
 
-## DOCUMANTATION
-
-### Documantation for django-cors-headers
-
-[DOCUMANTATION](https://github.com/adamchainz/django-cors-headers)
 

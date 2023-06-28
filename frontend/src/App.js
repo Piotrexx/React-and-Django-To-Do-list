@@ -60,7 +60,7 @@ function App() {
         <form onSubmit={postData}>
           <input type="text" name="title" />
           <input type="text" name="desc" />
-          <input type="submit" />
+          <input type="submit" value="submit"/>
         </form>
         <div>
           {
