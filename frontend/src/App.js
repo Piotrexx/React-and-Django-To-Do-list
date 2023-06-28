@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import { useEffect, useState } from 'react';
-import './App.css';
 function App() {
   const [data, setData] = useState([]);
 
@@ -56,26 +55,23 @@ function App() {
     }
 
     return (
-      <div className="App">
-        <form onSubmit={postData}>
-          <input type="text" name="title" />
-          <input type="text" name="desc" />
-          <input type="submit" value="submit"/>
+      <div className="bg-sky-300 w-[100vw] h-[100vh]">
+        <form onSubmit={postData} className=''>
+          <input type="text" name="title"className='border-2 rounded ' placeholder='title' />
+          <input type="text" name="desc"className='border-2 rounded m-1' placeholder='description' />
+          <input type="submit" value="submit"className='border-2 rounded bg-sky-500' />
         </form>
-        <div>
+        <div className='grid grid-cols-3 gap-4 '>
           {
             data.map((item, index) => (
-              <ul key={index}>
-                <li>
+              <ul key={index} className='rounded border-sky-950 border-4 text-center bg-sky-600'>
+                <li className='font-bold '>
                   {item.title}
                 </li>
                 <li>
                   {item.description}
                 </li>
-                <li>
-                  {item.id}
-                </li>
-                <button onClick={() => handleDelete(item.id)}>DELETE</button>
+                <button onClick={() => handleDelete(item.id)}>Done</button>
               </ul>
             ))
           }
