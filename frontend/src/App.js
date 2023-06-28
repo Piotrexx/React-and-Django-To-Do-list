@@ -34,15 +34,27 @@ function App() {
     
       await fetch('http://localhost:8000/api/task/', requestOptions)
         .then(response => console.log(response))
+        .then(() => window.location.reload())
         .catch(error => console.error(error));
 
     }
 
-    const handleDelete = (id) =>{
-      fetch(`http://localhost:8000/api/task/${id}`, {method: 'DELETE'})
-        .then(() => console.log('DONE'))
+    const handleDelete = (id) => {
+
+      const requestOptions = {
+        method: 'DELETE',
+        mode: 'cors',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+      }
+
+      fetch(`http://localhost:8000/api/task/${id}/`, requestOptions)
+        .then(response => console.log(response))
+        .then(() => window.location.reload())
         .catch(error => console.log(error))
     }
+
     return (
       <div className="App">
         <form onSubmit={postData}>
@@ -63,7 +75,7 @@ function App() {
                 <li>
                   {item.id}
                 </li>
-                <button onClick={handleDelete(item.id)}>DELETE</button>
+                <button onClick={() => handleDelete(item.id)}>DELETE</button>
               </ul>
             ))
           }
